@@ -10,6 +10,7 @@ class MSI extends Model {
     use HasFactory;
 
     protected $fillable = [
+        "payment_methods_id",
         "months",
         "paid_months",
         "init_date",

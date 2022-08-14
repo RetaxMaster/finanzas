@@ -10,18 +10,17 @@ class ConstantSpends extends Model {
     use HasFactory;
 
     protected $fillable = [
-        "type",
+        "payment_methods_id",
+        "name",
         "initial_date",
         "deactivation_date",
-        "spend_limit",
         "status",
     ];
 
     protected $casts = [
-        "type" => "string",
+        "name" => "string",
         "initial_date" => "date",
         "deactivation_date" => "date",
-        "spend_limit" => "float",
         "status" => "boolean",
     ];
 

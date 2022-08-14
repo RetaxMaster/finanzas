@@ -17,8 +17,9 @@ return new class extends Migration
 
             $table->id();
 
-            $table->string("name", 20)->nullable(false);
-            $table->date("cutoff_date")->nullable(false);
+            $table->string("name", 30)->nullable(false);
+            $table->tinyInteger("type")->nullable(false);
+            $table->tinyInteger("cutoff_date")->nullable(true)->default(null);
             $table->float("spend_limit")->nullable(false);
 
             $table->timestamps();

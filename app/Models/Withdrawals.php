@@ -11,6 +11,7 @@ class Withdrawals extends Model {
     use HasFactory;
 
     protected $fillable = [
+        "payment_methods_id",
         "type",
         "date",
         "amount",

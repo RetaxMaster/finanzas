@@ -24,10 +24,9 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
                 
-            $table->string("type", 20)->nullable(false);
+            $table->string("name", 30)->nullable(false);
             $table->date("initial_date")->nullable(false);
-            $table->date("deactivation_date")->nullable(false);
-            $table->float("spend_limit")->nullable(false);
+            $table->date("deactivation_date")->nullable(true)->default(null);
             $table->boolean("status")->nullable(false);
 
             $table->timestamps();
