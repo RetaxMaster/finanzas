@@ -2,10 +2,26 @@
 
 namespace App\Models;
 
+use App\Enums\WithdrawalType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Withdrawals extends Model
-{
+class Withdrawals extends Model {
+
     use HasFactory;
+
+    protected $fillable = [
+        "type",
+        "date",
+        "amount",
+        "description",
+    ];
+
+    protected $casts = [
+        "type" => WithdrawalType::class,
+        "date" => "datetime",
+        "amount" => "float",
+        "description" => "string",
+    ];
+
 }
