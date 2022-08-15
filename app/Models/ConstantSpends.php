@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class ConstantSpends extends Model {
@@ -23,5 +24,18 @@ class ConstantSpends extends Model {
         "deactivation_date" => "date",
         "status" => "boolean",
     ];
+
+    // Relaciones
+    
+    /**
+     * Get the payment_method that owns the Withdrawals
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function payment(): BelongsTo {
+        return $this->belongsTo(PaymentMethods::class, "payment_methods_id", "id");
+    }
+    
+    // -> Relaciones
 
 }
