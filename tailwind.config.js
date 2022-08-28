@@ -11,6 +11,25 @@ module.exports = {
     ],
 
     theme: {
+        colors: {
+            'primary': {
+                light: "d1c4e9",
+                DEFAULT: '#673ab7',
+                dark: '#512da8',
+            },
+            'secondary': {
+                DEFAULT: '#536dfe',
+            },
+            'icons': {
+                primary: '#212121',
+                secondary: '#757575',
+                icons: "#fff"
+            },
+            'table': {
+                cell: "#f4f4f4",
+                divider: "#ccc"
+            }
+        },
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],

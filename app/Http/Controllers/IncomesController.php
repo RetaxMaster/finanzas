@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\IncomesRequest;
 use App\Models\Incomes;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class IncomesController extends Controller
 {
@@ -12,9 +14,14 @@ class IncomesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        
+        $incomes = Incomes::with("payment")->get();
+
+        return Inertia::render("IncomesList", [
+            "incomes" => $incomes
+        ]);
+
     }
 
     /**
@@ -33,9 +40,12 @@ class IncomesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(IncomesRequest $request) {
+        
+        Incomes::create($request->all());
+
+        return redirect()->route("incomes.index");
+
     }
 
     /**

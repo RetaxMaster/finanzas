@@ -13,7 +13,12 @@ export default defineConfig({
                 transformAssetUrls: {
                     base: null,
                     includeAbsolute: false,
-                },
+                }/* ,
+                compilerOptions: {
+                    isCustomElement: (tag) => {
+                      return tag.startsWith('fp-') // (return true)
+                    }
+                } */
             },
         }),
     ],
