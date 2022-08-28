@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input,
+select,
+textarea {
+    border: 1px solid #ccc !important;
+    padding: 10px !important;
+    border-radius: 5px !important;
+    -webkit-border-radius: 5px !important;
+    -moz-border-radius: 5px !important;
+    -ms-border-radius: 5px !important;
+    -o-border-radius: 5px !important;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+    max-width: 100%;
+    min-height: 100px;
+}

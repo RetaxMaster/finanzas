@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -8,10 +9,14 @@ module.exports = {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/js/**/*.vue',
+        
+        './node_modules/tw-elements/dist/js/**/*.js'
     ],
 
     theme: {
         colors: {
+
+            // Mis colores
             'primary': {
                 light: "d1c4e9",
                 DEFAULT: '#673ab7',
@@ -28,7 +33,19 @@ module.exports = {
             'table': {
                 cell: "#f4f4f4",
                 divider: "#ccc"
-            }
+            },
+
+            // Colores de Tailwind
+            transparent: 'transparent',
+            current: 'currentColor',
+            black: colors.black,
+            white: colors.white,
+            gray: colors.gray,
+            emerald: colors.emerald,
+            indigo: colors.indigo,
+            yellow: colors.yellow,
+            blue: colors.blue,
+
         },
         extend: {
             fontFamily: {
@@ -37,5 +54,9 @@ module.exports = {
         },
     },
 
-    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+    plugins: [
+        require('@tailwindcss/forms'), 
+        require('@tailwindcss/typography'),
+        require('tw-elements/dist/plugin')
+    ],
 };

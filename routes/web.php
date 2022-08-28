@@ -29,7 +29,10 @@ use Inertia\Inertia;
 Route::get("/", [PagesController::class, "index"])
     ->name("index");
 
-Route::resource("incomes", IncomesController::class);
+Route::get("/incomes/create", [PagesController::class, "add_income"])
+    ->name("add_income");
+
+// Route::resource("incomes", IncomesController::class);
 
 Route::middleware([
     'auth:sanctum',
