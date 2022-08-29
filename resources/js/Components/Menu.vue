@@ -9,7 +9,7 @@
                 <Link @click="closeMenu" :href="route('index')">Tablas mensuales</Link>
             </li>
             <li>
-                <Link @click="closeMenu" href="#">Lista de gastos</Link>
+                <Link @click="closeMenu" :href="route('spents')">Lista de gastos</Link>
             </li>
             <li>
                 <Link @click="closeMenu" :href="route('add_income')">Añade un nuevo ingreso</Link>

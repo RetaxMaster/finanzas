@@ -29,6 +29,9 @@ use Inertia\Inertia;
 Route::get("/", [PagesController::class, "index"])
     ->name("index");
 
+Route::get("/spents", [PagesController::class, "spents"])
+    ->name("spents");
+
 Route::get("/incomes/create", [PagesController::class, "add_income"])
     ->name("add_income");
 

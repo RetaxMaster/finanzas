@@ -25,7 +25,7 @@ class WithdrawalsFactory extends Factory
             "type" => rand(1, 2),
             "date" => $this->faker->dateTime(),
             "amount" => $this->faker->randomFloat(2, 100, 1000),
-            "description" => $this->faker->paragraph(5),
+            "description" => $this->faker->word(3)
         ];
     }
 }

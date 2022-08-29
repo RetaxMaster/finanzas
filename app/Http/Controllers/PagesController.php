@@ -34,6 +34,14 @@ class PagesController extends Controller {
         return Inertia::render("AddIncome", compact("payment_methods"));
     }
 
-
+    /**
+     * Retorna la lista de gastos por método de pago
+     *
+     * @return Inertia/Inertia
+     */
+    public function spents() {
+        $payment_methods = PaymentMethods::with("withdrawals")->get();
+        return Inertia::render("SpentList", compact("payment_methods"));
+    }
 
 }
