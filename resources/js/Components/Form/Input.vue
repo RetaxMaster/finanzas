@@ -3,7 +3,14 @@
     <div class="input-container">
 
         <label :for="name">{{ label }}</label>
-        <input type="text" :name="name" :id="name" :placeholder="placeholder">
+        <input
+            :value="modelValue"
+            @input="changeValue"
+            type="text" 
+            :name="name" 
+            :id="name" 
+            :placeholder="placeholder"
+        >
 
     </div>
 
@@ -11,9 +18,19 @@
 
 <script setup>
 
+const emit = defineEmits(["update:modelValue"]);
+
+const changeValue = event => {
+    emit("update:modelValue", event.target.value);
+}
+
 defineProps({
     label: String,
     name: String,
+    modelValue: {
+        type: String,
+        required: true
+    },
     placeholder: {
         type: String,
         required: false,

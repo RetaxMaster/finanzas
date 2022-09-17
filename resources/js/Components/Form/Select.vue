@@ -4,7 +4,12 @@
 
         <label :for="name">{{ label }}</label>
 
-        <select :name="name" :id="name">
+        <select 
+            :selected="modelValue"
+            @change="changeValue"
+            :name="name" 
+            :id="name"
+        >
             <slot />
         </select>
 
@@ -14,9 +19,19 @@
 
 <script setup>
 
+const emit = defineEmits(["update:modelValue"]);
+
+const changeValue = event => {
+    emit("update:modelValue", event.target.value);
+}
+
 defineProps({
     label: String,
-    name: String
+    name: String,
+    modelValue: {
+        type: String,
+        required: true
+    },
 })
 
 </script>

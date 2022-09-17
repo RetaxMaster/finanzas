@@ -41,7 +41,8 @@ Route::get("/withdrawals/create", [PagesController::class, "add_withdrawal"])
 Route::get("/forecast", [PagesController::class, "forecast"])
     ->name("forecast");
 
-// Route::resource("incomes", IncomesController::class);
+Route::resource("incomes", IncomesController::class)
+    ->except(["show", "index", "create", "edit", "update", "destroy"]);
 
 Route::middleware([
     'auth:sanctum',

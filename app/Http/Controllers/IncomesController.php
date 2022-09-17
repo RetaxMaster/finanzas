@@ -14,7 +14,7 @@ class IncomesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
+    /* public function index() {
         
         $incomes = Incomes::with("payment")->get();
 
@@ -22,17 +22,17 @@ class IncomesController extends Controller
             "incomes" => $incomes
         ]);
 
-    }
+    } */
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    /* public function create()
     {
         //
-    }
+    } */
 
     /**
      * Store a newly created resource in storage.
@@ -41,10 +41,12 @@ class IncomesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(IncomesRequest $request) {
-        
-        Incomes::create($request->all());
 
-        return redirect()->route("incomes.index");
+        return dd($request->all());
+        
+        /* Incomes::create($request->all());
+
+        return redirect()->route("incomes.index"); */
 
     }
 
@@ -54,10 +56,10 @@ class IncomesController extends Controller
      * @param  \App\Models\Incomes  $incomes
      * @return \Illuminate\Http\Response
      */
-    public function show(Incomes $incomes)
+    /* public function show(Incomes $incomes)
     {
         //
-    }
+    } */
 
     /**
      * Show the form for editing the specified resource.
@@ -65,10 +67,10 @@ class IncomesController extends Controller
      * @param  \App\Models\Incomes  $incomes
      * @return \Illuminate\Http\Response
      */
-    public function edit(Incomes $incomes)
+    /* public function edit(Incomes $incomes)
     {
         //
-    }
+    } */
 
     /**
      * Update the specified resource in storage.
@@ -77,10 +79,10 @@ class IncomesController extends Controller
      * @param  \App\Models\Incomes  $incomes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Incomes $incomes)
+    /* public function update(Request $request, Incomes $incomes)
     {
         //
-    }
+    } */
 
     /**
      * Remove the specified resource from storage.
@@ -88,8 +90,8 @@ class IncomesController extends Controller
      * @param  \App\Models\Incomes  $incomes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Incomes $incomes)
+    /* public function destroy(Incomes $incomes)
     {
         //
-    }
+    } */
 }

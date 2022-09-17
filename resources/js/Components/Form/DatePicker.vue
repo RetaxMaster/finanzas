@@ -2,21 +2,33 @@
     
     <div class="datepicker-container">
         <label>{{ label }}</label>
-        <Datepicker v-model="date" />
+        <Datepicker
+            :modelValue="modelValue"
+            @update:modelValue="changeValue"
+        />
     </div>
 
 </template>
 
 <script setup>
 
-    import { ref } from 'vue';
     import Datepicker from 'vuejs3-datepicker';
 
+    const emit = defineEmits(["update:modelValue"]);
+
+    const changeValue = value => {
+        emit("update:modelValue", value);
+    }
+
     defineProps({
-        label: String
+        label: String,
+        modelValue: {
+            type: Date,
+            required: true
+        },
     });
 
-    const date = ref(new Date());
+    
 
 </script>
 

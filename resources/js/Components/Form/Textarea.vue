@@ -3,13 +3,25 @@
     <div class="textarea-container">
 
         <label :for="name">{{ label }}</label>
-        <textarea :name="name" :id="name" :placeholder="placeholder"></textarea>
+        <textarea 
+            :name="name" 
+            :id="name" 
+            :placeholder="placeholder"
+            @input="changeValue"
+            :value="modelValue"
+        ></textarea>
 
     </div>
 
 </template>
 
 <script setup>
+
+const emit = defineEmits(["update:modelValue"]);
+
+const changeValue = event => {
+    emit("update:modelValue", event.target.value);
+}
 
 defineProps({
     label: String,
@@ -18,7 +30,11 @@ defineProps({
         type: String,
         required: false,
         default: ""
-    }
+    },
+    modelValue: {
+        type: String,
+        required: true
+    },
 })
 
 </script>
