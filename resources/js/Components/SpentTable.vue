@@ -12,6 +12,19 @@
             </tr>
         </thead>
         <tbody>
+            <tr class="bg-secondary text-icons-icons month-name">
+                <th colspan="3">Enero</th>
+            </tr>
+            <tr
+                v-for="spent in payment.withdrawals"
+                :key="spent.id"
+            >
+                <td>{{ getDate(new Date(spent.date)) }}</td>
+                <td>{{ spent.description }}</td>
+                <td>{{ money(spent.amount) }}</td>
+            </tr>
+        </tbody>
+        <tbody>
             <tr class="bg-secondary text-icons-icons">
                 <th colspan="3">Enero</th>
             </tr>
@@ -19,9 +32,9 @@
                 v-for="spent in payment.withdrawals"
                 :key="spent.id"
             >
-                <td>{{ spent.date }}</td>
+                <td>{{ getDate(new Date(spent.date)) }}</td>
                 <td>{{ spent.description }}</td>
-                <td>{{ spent.amount }}</td>
+                <td>{{ money(spent.amount) }}</td>
             </tr>
         </tbody>
     </table>
@@ -29,7 +42,10 @@
 </template>
 
 <script setup>
+
 import { toRaw } from "@vue/reactivity";
+import { getDate } from "@/composables/dateParser.js";
+import { money } from "@/composables/moneyParser.js";
 
 
 const pay = defineProps({

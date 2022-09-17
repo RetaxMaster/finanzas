@@ -13,18 +13,18 @@
         <tr>
             <td>10</td>
             <td>Tarjeta 1 MSI</td>
-            <td>$5,0000</td>
+            <td>{{ money(15000) }}</td>
             <td></td>
             <td></td>
-            <td>$10,000</td>
+            <td>{{ money(10000) }}</td>
         </tr>
         <tr>
             <td>10</td>
             <td></td>
             <td></td>
             <td>Pago</td>
-            <td>$15,000</td>
-            <td>$10,000</td>
+            <td>{{ money(15000) }}</td>
+            <td>{{ money(10000) }}</td>
         </tr>
         <tr>
             <td></td>
@@ -61,6 +61,12 @@
     </table>
 
 </template>
+
+<script setup>
+
+import { money } from "@/composables/moneyParser.js";
+
+</script>
 
 <style lang="scss" scoped>
 

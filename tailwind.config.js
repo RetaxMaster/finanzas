@@ -8,9 +8,7 @@ module.exports = {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        './resources/js/**/*.vue',
-        
-        './node_modules/tw-elements/dist/js/**/*.js'
+        './resources/js/**/*.vue'
     ],
 
     theme: {
@@ -56,7 +54,6 @@ module.exports = {
 
     plugins: [
         require('@tailwindcss/forms'), 
-        require('@tailwindcss/typography'),
-        require('tw-elements/dist/plugin')
+        require('@tailwindcss/typography')
     ],
 };

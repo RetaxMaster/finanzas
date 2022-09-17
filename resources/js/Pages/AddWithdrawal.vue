@@ -1,6 +1,6 @@
 <template>
     
-    <AppLayout title="Añade un nuevo ingreso:">
+    <AppLayout title="Añade un nuevo gasto:">
 
         <form action="#" method="post">
 
@@ -13,9 +13,9 @@
                     </option>
             </CustomSelect>
 
-            <CustomSelect label="Tipo de ingreso" name="type">
-                <option value="1">Pago de nómina</option>
-                <option value="2">Reembolso</option>
+            <CustomSelect label="Tipo de gasto" name="type">
+                <option value="1">Retiro de la cuenta</option>
+                <option value="2">Compra</option>
             </CustomSelect>
 
             <DatePicker
@@ -30,7 +30,7 @@
 
             <CustomTextarea
                 name="description"
-                label="Descripción del ingreso:"
+                label="Descripción del gasto:"
                 placeholder="Inventate una buena excusa"
             />
 
@@ -45,6 +45,8 @@
 </template>
 
 <script setup>
+
+import { ref, reactive } from '@vue/reactivity';
 
 import AppLayout from '@/Layouts/AppLayout.vue';
 

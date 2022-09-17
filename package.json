@@ -28,6 +28,6 @@
         "@fortawesome/free-solid-svg-icons": "^6.1.2",
         "@fortawesome/vue-fontawesome": "^3.0.1",
         "pinia": "^2.0.21",
-        "tw-elements": "^1.0.0-alpha12"
+        "vuejs3-datepicker": "^1.0.12"
     }
 }

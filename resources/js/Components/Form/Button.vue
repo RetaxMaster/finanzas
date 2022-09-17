@@ -12,8 +12,6 @@
 
 <script setup>
 
-    import 'tw-elements';
-
     defineProps({
         type: {
             type: String,

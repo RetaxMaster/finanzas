@@ -35,6 +35,12 @@ Route::get("/spents", [PagesController::class, "spents"])
 Route::get("/incomes/create", [PagesController::class, "add_income"])
     ->name("add_income");
 
+Route::get("/withdrawals/create", [PagesController::class, "add_withdrawal"])
+    ->name("add_withdrawal");
+
+Route::get("/forecast", [PagesController::class, "forecast"])
+    ->name("forecast");
+
 // Route::resource("incomes", IncomesController::class);
 
 Route::middleware([

@@ -4,7 +4,9 @@
 
 input,
 select,
-textarea {
+textarea,
+.vuejs3-datepicker__value {
+    width: 100%;
     border: 1px solid #ccc !important;
     padding: 10px !important;
     border-radius: 5px !important;

@@ -15,10 +15,10 @@
                 <Link @click="closeMenu" :href="route('add_income')">Añade un nuevo ingreso</Link>
             </li>
             <li>
-                <Link @click="closeMenu" href="#">Añade un nuevo gasto</Link>
+                <Link @click="closeMenu" :href="route('add_withdrawal')">Añade un nuevo gasto</Link>
             </li>
             <li>
-                <Link @click="closeMenu" href="#">Haz una previsión</Link>
+                <Link @click="closeMenu" :href="route('forecast')">Haz una previsión</Link>
             </li>
         </ul>
     </nav>
@@ -49,6 +49,7 @@ nav {
     width: 100%;
     height: 100%;
     transition: 0.3s all ease;
+    z-index: 1;
 
     &.open {
         left: 0;
