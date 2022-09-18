@@ -42,11 +42,9 @@ class IncomesController extends Controller
      */
     public function store(IncomesRequest $request) {
 
-        return dd($request->all());
-        
-        /* Incomes::create($request->all());
+        Incomes::create($request->all());
 
-        return redirect()->route("incomes.index"); */
+        return response()->json([], 200);
 
     }
 

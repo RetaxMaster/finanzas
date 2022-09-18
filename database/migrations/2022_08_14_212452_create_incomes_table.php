@@ -25,7 +25,7 @@ return new class extends Migration
                 ->onDelete('cascade');
                 
             $table->tinyInteger("type")->nullable(false);
-            $table->timestamp('date')->nullable(false)->default(now());
+            $table->date('date')->nullable(false)->default(now());
             $table->float("amount")->nullable(false);
             $table->text("description")->nullable(false);
 

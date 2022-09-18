@@ -23,7 +23,7 @@ class WithdrawalsFactory extends Factory
         return [
             "payment_methods_id" => rand(1,3),
             "type" => rand(1, 2),
-            "date" => $this->faker->dateTime(),
+            "date" => $this->faker->date(),
             "amount" => $this->faker->randomFloat(2, 100, 1000),
             "description" => $this->faker->word(3)
         ];

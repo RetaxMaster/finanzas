@@ -21,7 +21,7 @@ class Withdrawals extends Model {
 
     protected $casts = [
         "type" => WithdrawalType::class,
-        "date" => "datetime",
+        "date" => "date",
         "amount" => "float",
         "description" => "string",
     ];

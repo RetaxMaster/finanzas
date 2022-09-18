@@ -21,7 +21,7 @@ class Incomes extends Model {
 
     protected $casts = [
         "type" => IncomeType::class,
-        "date" => "datetime",
+        "date" => "date",
         "amount" => "float",
         "description" => "string",
     ];

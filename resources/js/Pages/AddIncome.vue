@@ -62,38 +62,51 @@
 
 <script setup>
 
-import AppLayout from '@/Layouts/AppLayout.vue';
+import axios from 'axios';
+import Swal from 'sweetalert2'
+import { reactive } from '@vue/reactivity';
 
+import AppLayout from '@/Layouts/AppLayout.vue';
 import CustomSelect from '@/Components/Form/Select.vue';
 import CustomInput from '@/Components/Form/Input.vue';
 import CustomTextarea from '@/Components/Form/Textarea.vue';
 import CustomButton from '@/Components/Form/Button.vue';
 import DatePicker from '@/Components/Form/DatePicker.vue';
-import { reactive } from '@vue/reactivity';
-import { Inertia } from '@inertiajs/inertia';
 
-const state = reactive({
+const form = {
     paymentMethod: "1",
     incomeType: "1",
     date: new Date(),
     amount: "",
     description: ""
-})
+};
+
+const state = reactive({ ...form })
 
 const saveIncome = e => {
 
     e.preventDefault();
 
-    /* Inertia.post(
-        route("incomes.store"),
-        {
-            payment_methods_id: state.paymentMethod,
-            type: state.incomeType,
-            date: state.date, 
-            amount: state.amount, 
-            description: state.description
-        }
-    ); */
+    axios.post(route("incomes.store"), {
+        payment_methods_id: state.paymentMethod,
+        type: state.incomeType,
+        date: state.date, 
+        amount: state.amount, 
+        description: state.description
+    })
+    .then(response => {
+
+        if (response.status == 200)
+            Swal.fire({
+                title: '¡Hecho!',
+                text: 'Este ingreso ha sido guardado con éxito.',
+                icon: 'success',
+                confirmButtonText: 'Hecho'
+            });
+
+        Object.assign(state, form);
+
+    });
 
 }
 
