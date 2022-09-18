@@ -6,6 +6,7 @@ use App\Http\Requests\IncomesRequest;
 use App\Models\Incomes;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\PaymentMethods;
 
 class IncomesController extends Controller
 {
@@ -29,10 +30,11 @@ class IncomesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /* public function create()
+    public function create()
     {
-        //
-    } */
+        $payment_methods = PaymentMethods::all();
+        return Inertia::render("AddIncome", compact("payment_methods"));
+    }
 
     /**
      * Store a newly created resource in storage.

@@ -2,7 +2,11 @@
     
     <AppLayout title="Añade un nuevo gasto:">
 
-        <form action="#" method="post">
+        <form 
+            action="#"
+            method="post"
+            @submit="saveWithdrawal"
+        >
 
             <CustomSelect 
                 label="Método de pago" 
@@ -19,7 +23,7 @@
             </CustomSelect>
 
             <CustomSelect 
-                label="Tipo de ingreso" 
+                label="Tipo de gasto" 
                 name="type"
                 v-model="state.incomeType"
             >
@@ -34,14 +38,14 @@
 
             <CustomInput
                 name="amount"
-                label="Monto del ingreso:"
+                label="Monto del gasto:"
                 placeholder="$1,000"
                 v-model="state.amount"
             />
 
             <CustomTextarea
                 name="description"
-                label="Descripción del ingreso:"
+                label="Descripción del gasto:"
                 placeholder="Inventate una buena excusa"
                 v-model="state.description"
             />
@@ -58,24 +62,53 @@
 
 <script setup>
 
-import { ref, reactive } from '@vue/reactivity';
+import axios from 'axios';
+import Swal from 'sweetalert2'
+import { reactive } from '@vue/reactivity';
 
 import AppLayout from '@/Layouts/AppLayout.vue';
-
 import CustomSelect from '@/Components/Form/Select.vue';
 import CustomInput from '@/Components/Form/Input.vue';
 import CustomTextarea from '@/Components/Form/Textarea.vue';
 import CustomButton from '@/Components/Form/Button.vue';
 import DatePicker from '@/Components/Form/DatePicker.vue';
-import { reactive } from '@vue/reactivity';
 
-const state = reactive({
+const form = {
     paymentMethod: "1",
     incomeType: "1",
     date: new Date(),
     amount: "",
     description: ""
-})
+};
+
+const state = reactive({ ...form })
+
+const saveWithdrawal = e => {
+
+    e.preventDefault();
+
+    axios.post(route("withdrawals.store"), {
+        payment_methods_id: state.paymentMethod,
+        type: state.incomeType,
+        date: state.date, 
+        amount: state.amount, 
+        description: state.description
+    })
+    .then(response => {
+
+        if (response.status == 200)
+            Swal.fire({
+                title: '¡Hecho!',
+                text: 'Este retiro ha sido guardado con éxito.',
+                icon: 'success',
+                confirmButtonText: 'Hecho'
+            });
+
+        Object.assign(state, form);
+
+    });
+
+}
 
 defineProps({
     payment_methods: {

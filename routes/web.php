@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\IncomesController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\WithdrawalsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -32,17 +33,14 @@ Route::get("/", [PagesController::class, "index"])
 Route::get("/spents", [PagesController::class, "spents"])
     ->name("spents");
 
-Route::get("/incomes/create", [PagesController::class, "add_income"])
-    ->name("add_income");
-
-Route::get("/withdrawals/create", [PagesController::class, "add_withdrawal"])
-    ->name("add_withdrawal");
-
 Route::get("/forecast", [PagesController::class, "forecast"])
     ->name("forecast");
 
 Route::resource("incomes", IncomesController::class)
-    ->except(["show", "index", "create", "edit", "update", "destroy"]);
+    ->except(["show", "index", "edit", "update", "destroy"]);
+
+Route::resource("withdrawals", WithdrawalsController::class)
+    ->except(["show", "index", "edit", "update", "destroy"]);
 
 Route::middleware([
     'auth:sanctum',

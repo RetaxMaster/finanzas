@@ -25,16 +25,6 @@ class PagesController extends Controller {
     }
 
     /**
-     * Retorna el formulario para añadir un ingreso
-     *
-     * @return Inertia/Inertia
-     */
-    public function add_income() {
-        $payment_methods = PaymentMethods::all();
-        return Inertia::render("AddIncome", compact("payment_methods"));
-    }
-
-    /**
      * Retorna la lista de gastos por método de pago
      *
      * @return Inertia/Inertia
@@ -43,17 +33,7 @@ class PagesController extends Controller {
         $payment_methods = PaymentMethods::with("withdrawals")->get();
         return Inertia::render("SpentList", compact("payment_methods"));
     }
-
-    /**
-     * Retorna el formulario para añadir un gasto
-     *
-     * @return Inertia/Inertia
-     */
-    public function add_withdrawal() {
-        $payment_methods = PaymentMethods::all();
-        return Inertia::render("AddWithdrawal", compact("payment_methods"));
-    }
-
+    
     /**
      * Retorna la vista para hacer previsiones futuras de gastos
      *

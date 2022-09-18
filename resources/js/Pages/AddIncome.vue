@@ -46,7 +46,7 @@
             <CustomTextarea
                 name="description"
                 label="Descripción del ingreso:"
-                placeholder="Inventate una buena excusa"
+                placeholder="¿De dónde sacaste el dinero?"
                 v-model="state.description"
             />
 

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\WithdrawalsRequest;
 use App\Models\Withdrawals;
 use Illuminate\Http\Request;
+use App\Models\PaymentMethods;
+use Inertia\Inertia;
 
 class WithdrawalsController extends Controller
 {
@@ -12,10 +15,10 @@ class WithdrawalsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    /* public function index()
     {
         //
-    }
+    } */
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +27,8 @@ class WithdrawalsController extends Controller
      */
     public function create()
     {
-        //
+        $payment_methods = PaymentMethods::all();
+        return Inertia::render("AddWithdrawal", compact("payment_methods"));
     }
 
     /**
@@ -33,9 +37,12 @@ class WithdrawalsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(WithdrawalsRequest $request) {
+        
+        Withdrawals::create($request->all());
+
+        return response()->json([], 200);
+
     }
 
     /**
@@ -44,10 +51,10 @@ class WithdrawalsController extends Controller
      * @param  \App\Models\Withdrawals  $withdrawals
      * @return \Illuminate\Http\Response
      */
-    public function show(Withdrawals $withdrawals)
+    /* public function show(Withdrawals $withdrawals)
     {
         //
-    }
+    } */
 
     /**
      * Show the form for editing the specified resource.
@@ -55,10 +62,10 @@ class WithdrawalsController extends Controller
      * @param  \App\Models\Withdrawals  $withdrawals
      * @return \Illuminate\Http\Response
      */
-    public function edit(Withdrawals $withdrawals)
+    /* public function edit(Withdrawals $withdrawals)
     {
         //
-    }
+    } */
 
     /**
      * Update the specified resource in storage.
@@ -67,10 +74,10 @@ class WithdrawalsController extends Controller
      * @param  \App\Models\Withdrawals  $withdrawals
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Withdrawals $withdrawals)
+    /* public function update(Request $request, Withdrawals $withdrawals)
     {
         //
-    }
+    } */
 
     /**
      * Remove the specified resource from storage.
@@ -78,8 +85,8 @@ class WithdrawalsController extends Controller
      * @param  \App\Models\Withdrawals  $withdrawals
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Withdrawals $withdrawals)
+    /* public function destroy(Withdrawals $withdrawals)
     {
         //
-    }
+    } */
 }

@@ -12,10 +12,10 @@
                 <Link @click="closeMenu" :href="route('spents')">Lista de gastos</Link>
             </li>
             <li>
-                <Link @click="closeMenu" :href="route('add_income')">Añade un nuevo ingreso</Link>
+                <Link @click="closeMenu" :href="route('incomes.create')">Añade un nuevo ingreso</Link>
             </li>
             <li>
-                <Link @click="closeMenu" :href="route('add_withdrawal')">Añade un nuevo gasto</Link>
+                <Link @click="closeMenu" :href="route('withdrawals.create')">Añade un nuevo gasto</Link>
             </li>
             <li>
                 <Link @click="closeMenu" :href="route('forecast')">Haz una previsión</Link>
