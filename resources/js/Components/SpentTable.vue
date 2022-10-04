@@ -47,12 +47,14 @@ import { toRaw } from "@vue/reactivity";
 import { getDate } from "@/composables/dateParser.js";
 import { money } from "@/composables/moneyParser.js";
 
-
 const pay = defineProps({
-    payment: Object
+    payment: Object,
+    majorRows: Number
 })
 
-console.log(toRaw(pay.payment));
+// Calculo cuántas filas faltan
+const tableRows = pay.payment.withdrawals.length;
+const rowsLeft = pay.majorRows - tableRows;
 
 </script>
 
@@ -60,6 +62,7 @@ console.log(toRaw(pay.payment));
 
     table {
         margin-bottom: 30px;
+        margin-right: 50px;
     }
 
     th, td {
