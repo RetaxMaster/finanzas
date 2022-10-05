@@ -27,8 +27,8 @@
                 name="type"
                 v-model="state.incomeType"
             >
-                <option value="1">Pago de nómina</option>
-                <option value="2">Reembolso</option>
+                <option value="1">Compra</option>
+                <option value="2">Retiro</option>
             </CustomSelect>
 
             <DatePicker

@@ -11,25 +11,15 @@
                 <th>Total</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody
+            v-for="(month, i) in payment.months"
+            :key="i"
+        >
             <tr class="bg-secondary text-icons-icons month-name">
-                <th colspan="3">Enero</th>
+                <th colspan="3">{{ month.month_name }}</th>
             </tr>
             <tr
-                v-for="spent in payment.withdrawals"
-                :key="spent.id"
-            >
-                <td>{{ getDate(new Date(spent.date)) }}</td>
-                <td>{{ spent.description }}</td>
-                <td>{{ money(spent.amount) }}</td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr class="bg-secondary text-icons-icons">
-                <th colspan="3">Enero</th>
-            </tr>
-            <tr
-                v-for="spent in payment.withdrawals"
+                v-for="spent in month.spents"
                 :key="spent.id"
             >
                 <td>{{ getDate(new Date(spent.date)) }}</td>
@@ -47,14 +37,11 @@ import { toRaw } from "@vue/reactivity";
 import { getDate } from "@/composables/dateParser.js";
 import { money } from "@/composables/moneyParser.js";
 
-const pay = defineProps({
-    payment: Object,
-    majorRows: Number
+const props = defineProps({
+    payment: Object
 })
 
-// Calculo cuántas filas faltan
-const tableRows = pay.payment.withdrawals.length;
-const rowsLeft = pay.majorRows - tableRows;
+console.log(props.payment);
 
 </script>
 

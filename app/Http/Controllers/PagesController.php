@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\FilterResults;
 use App\Models\Incomes;
 use App\Models\PaymentMethods;
 use Illuminate\Http\Request;
@@ -30,8 +31,9 @@ class PagesController extends Controller {
      * @return Inertia/Inertia
      */
     public function spents() {
-        $payment_methods = PaymentMethods::with("withdrawals")->get();
-        return Inertia::render("SpentList", compact("payment_methods"));
+        $results = FilterResults::get_ordered_spents_table();
+
+        return Inertia::render("SpentList", compact("results"));
     }
     
     /**
